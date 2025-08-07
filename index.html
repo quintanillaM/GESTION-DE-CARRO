@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestión de Vehículos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        form input {
+            flex: 1 1 120px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .actions {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #upload-file {
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button.action-btn {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.edit-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        button.edit-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        button.delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button.delete-btn:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Vehículos (sin servidor)</h1>
+
+        <form id="vehicle-form">
+            <input type="hidden" id="vehicle-id" />
+            <input type="text" id="vin" placeholder="VIN" required />
+            <input type="text" id="marca" placeholder="Marca" required />
+            <input type="text" id="modelo" placeholder="Modelo" required />
+            <input type="number" id="anio" placeholder="Año" required min="1900" max="2099" />
+            <input type="text" id="motor" placeholder="Motor" required />
+            <input type="text" id="conductor" placeholder="Conductor" required />
+            <input type="text" id="descripcion" placeholder="Descripción" required />
+            <button type="submit" id="save-btn">Agregar Vehículo</button>
+            <button type="button" id="cancel-btn" style="display:none;">Cancelar Edición</button>
+        </form>
+
+        <hr />
+
+        <div class="actions">
+            <button id="download-btn">Descargar Lista (.json)</button>
+            <input type="file" id="upload-file" accept=".json" />
+        </div>
+
+        <table id="vehicles-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>VIN</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th>Motor</th>
+                    <th>Conductor</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Vehículos se listarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
